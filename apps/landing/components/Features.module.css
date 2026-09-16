@@ -1,0 +1,148 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.wide {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+}
+
+.wideText {
+  flex: 1;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border-radius: var(--r-md);
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+}
+
+.iconAccent {
+  background: var(--accent-soft);
+  color: #00875f;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.desc {
+  margin-top: 10px;
+  color: var(--ink-2);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.meta {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+/* 총액 비교 미니 도표 */
+.compare {
+  flex-shrink: 0;
+  width: 264px;
+  padding: 16px;
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+}
+
+.bar {
+  display: grid;
+  grid-template-columns: 54px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding-block: 7px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.barTrack {
+  height: 10px;
+  border-radius: var(--r-full);
+  background: #dfe4ee;
+  overflow: hidden;
+}
+
+.barFill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-full);
+  background: var(--brand);
+}
+
+.barFillBest {
+  background: var(--accent);
+}
+
+.barName {
+  color: var(--ink-2);
+}
+
+.barValue {
+  font-variant-numeric: tabular-nums;
+}
+
+.compareNote {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-strong);
+  color: var(--ink-3);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .wide {
+    grid-column: span 1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .compare {
+    width: 100%;
+  }
+}

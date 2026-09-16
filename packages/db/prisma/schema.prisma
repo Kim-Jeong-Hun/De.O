@@ -1,0 +1,15 @@
+generator client {
+  provider               = "prisma-client"
+  output                 = "../src/generated/prisma"
+  moduleFormat           = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension    = "js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// 상품·판매 정보·가격 이력·알림 모델은 M2 데이터 검증 후 M3에서 정의합니다.
+// 구조 생성 단계에서는 임의의 테이블이나 마이그레이션을 만들지 않습니다.
+

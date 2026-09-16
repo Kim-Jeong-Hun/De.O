@@ -1,0 +1,84 @@
+.footer {
+  background: var(--ink-surface);
+  color: var(--on-ink-2);
+  padding-block: 64px 36px;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line-ink);
+}
+
+.about {
+  max-width: 340px;
+}
+
+.aboutText {
+  margin-top: 16px;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 6px 12px;
+  border: 1px solid var(--line-ink);
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--on-ink);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00e0a4;
+}
+
+.colTitle {
+  margin-bottom: 14px;
+  color: var(--on-ink);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+  font-size: 14.5px;
+}
+
+.list a:hover {
+  color: var(--on-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 24px;
+  font-size: 13px;
+}
+
+.note {
+  max-width: 620px;
+  color: #6f7a97;
+}
+
+@media (max-width: 720px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

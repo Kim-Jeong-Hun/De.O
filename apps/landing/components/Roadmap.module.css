@@ -1,0 +1,102 @@
+.wrap {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.stage {
+  position: relative;
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--bg);
+}
+
+.current {
+  border-color: rgba(27, 92, 255, 0.45);
+  background: linear-gradient(180deg, #f2f6ff, #ffffff);
+  box-shadow: 0 10px 30px rgba(27, 92, 255, 0.12);
+}
+
+.marker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.dotDone {
+  background: var(--accent);
+}
+
+.dotCurrent {
+  background: var(--brand);
+  box-shadow: 0 0 0 4px rgba(27, 92, 255, 0.18);
+}
+
+.phase {
+  color: var(--ink-3);
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.stageTitle {
+  font-size: 16.5px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.stageDesc {
+  margin-top: 10px;
+  color: var(--ink-2);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 14px;
+}
+
+.note {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 16px 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-lg);
+  color: var(--ink-2);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.noteIcon {
+  flex-shrink: 0;
+  color: var(--warn);
+}
+
+@media (max-width: 1000px) {
+  .track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .track {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

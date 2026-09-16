@@ -1,0 +1,163 @@
+.wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink-surface);
+  color: var(--on-ink);
+}
+
+.wrap::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  right: -140px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(27, 92, 255, 0.35),
+    rgba(27, 92, 255, 0)
+  );
+  pointer-events: none;
+}
+
+.head {
+  position: relative;
+  max-width: 620px;
+  margin-bottom: 44px;
+}
+
+.eyebrowDark {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 5px 12px;
+  border: 1px solid var(--line-ink);
+  border-radius: var(--r-full);
+  color: #9fb2e6;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.title {
+  font-size: clamp(26px, 4vw, 38px);
+}
+
+.lead {
+  margin-top: 16px;
+  color: var(--on-ink-2);
+  font-size: clamp(15px, 2vw, 17px);
+}
+
+.layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  align-items: center;
+  gap: 56px;
+}
+
+.tabs {
+  display: grid;
+  gap: 12px;
+}
+
+.tab {
+  display: block;
+  width: 100%;
+  padding: 20px 22px;
+  border: 1px solid var(--line-ink);
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.03);
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.tabActive {
+  border-color: rgba(27, 92, 255, 0.7);
+  background: linear-gradient(
+    120deg,
+    rgba(27, 92, 255, 0.24),
+    rgba(27, 92, 255, 0.06)
+  );
+}
+
+.tabTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tabIndex {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tabActive .tabIndex {
+  background: #fff;
+  color: var(--ink);
+}
+
+.tabTitle {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.tabDesc {
+  display: block;
+  margin-top: 10px;
+  color: var(--on-ink-2);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.tabPoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.point {
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: #cdd8f2;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.stage {
+  display: grid;
+  place-items: center;
+}
+
+.caption {
+  margin-top: 20px;
+  color: #6f7a97;
+  font-size: 12.5px;
+  text-align: center;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .stage {
+    order: -1;
+  }
+}
