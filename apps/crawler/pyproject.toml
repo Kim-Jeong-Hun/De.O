@@ -1,0 +1,13 @@
+[project]
+name = "de-o-crawler"
+version = "0.1.0"
+description = "De.O price collection worker scaffold"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.32.0,<3",
+    "beautifulsoup4>=4.13.0,<5",
+]
+
+[tool.uv]
+package = false
+

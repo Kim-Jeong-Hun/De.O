@@ -1,0 +1,32 @@
+{
+  "name": "@de-o/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "prisma generate",
+    "validate": "prisma validate",
+    "build": "pnpm generate && tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "migrate:dev": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.10.0",
+    "@prisma/adapter-mariadb": "^7.10.0",
+    "dotenv": "^17.0.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.10.0",
+    "typescript": "^5.9.2",
+    "@types/node": "^22.0.0"
+  }
+}

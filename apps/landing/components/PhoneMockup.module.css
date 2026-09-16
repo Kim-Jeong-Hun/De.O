@@ -1,0 +1,518 @@
+/* 앱 화면 목업. 이미지 파일 없이 CSS와 SVG로 UI를 재현합니다. */
+
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 300 / 620;
+  padding: 11px;
+  border-radius: 46px;
+  background: linear-gradient(160deg, #2b3350, #0b1020 60%);
+  box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 36px;
+  background: #ffffff;
+  font-size: 12px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.notch {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 22px;
+  border-radius: var(--r-full);
+  background: #0b1020;
+  z-index: 3;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.signal {
+  display: inline-flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.signal i {
+  display: block;
+  width: 3px;
+  border-radius: 1px;
+  background: var(--ink);
+}
+
+.body {
+  flex: 1;
+  overflow: hidden;
+  padding: 10px 14px 0;
+}
+
+.appBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.appTitle {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding-inline: 12px;
+  border-radius: var(--r-full);
+  background: var(--surface-2);
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.chips {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.chip {
+  padding: 4px 9px;
+  border-radius: var(--r-full);
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 10.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.chipOn {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+/* 상품 헤더 */
+.product {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #dfe6f7, #f4f6fc);
+  display: grid;
+  place-items: center;
+  color: #94a0bd;
+}
+
+.productName {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.productMeta {
+  display: block;
+  margin-top: 3px;
+  color: var(--ink-3);
+  font-size: 10.5px;
+}
+
+/* 판매처 카드 */
+.offerList {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.offer {
+  padding: 10px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: #fff;
+}
+
+.offerBest {
+  border-color: rgba(0, 168, 120, 0.55);
+  background: linear-gradient(180deg, #f2fbf8, #ffffff);
+  box-shadow: 0 6px 16px rgba(0, 168, 120, 0.12);
+}
+
+.offerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.mall {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.mallDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.badgeBest {
+  padding: 2px 7px;
+  border-radius: var(--r-full);
+  background: var(--accent);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 800;
+}
+
+.badgeSoft {
+  padding: 2px 7px;
+  border-radius: var(--r-full);
+  background: var(--surface-2);
+  color: var(--ink-3);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.priceMain {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.priceSub {
+  color: var(--ink-3);
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.breakdown {
+  display: flex;
+  gap: 8px;
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px dashed var(--line);
+  color: var(--ink-3);
+  font-size: 10px;
+}
+
+.breakdown b {
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
+/* 차트 */
+.priceHero {
+  margin-top: 4px;
+}
+
+.priceHeroValue {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.big {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.down {
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.chartCard {
+  margin-top: 12px;
+  padding: 12px 10px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.chartLegend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: var(--ink-3);
+  font-size: 9.5px;
+}
+
+.periodTabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+  padding: 3px;
+  border-radius: var(--r-full);
+  background: var(--surface-2);
+}
+
+.periodTab {
+  flex: 1;
+  padding: 5px 0;
+  border-radius: var(--r-full);
+  text-align: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+
+.periodTabOn {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 알림 */
+.alertCard {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: var(--r-md);
+  background: linear-gradient(150deg, #10224f, #0b1020);
+  color: #fff;
+}
+
+.alertLabel {
+  display: block;
+  color: #9fb2e6;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.alertValue {
+  margin-top: 4px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.alertHint {
+  margin-top: 6px;
+  color: #a8b8dd;
+  font-size: 10px;
+}
+
+.slider {
+  position: relative;
+  height: 4px;
+  margin: 14px 0 6px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.sliderFill {
+  position: absolute;
+  inset: 0 38% 0 0;
+  border-radius: var(--r-full);
+  background: #00e0a4;
+}
+
+.sliderKnob {
+  position: absolute;
+  top: 50%;
+  left: 62%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.rowItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.rowItem:last-child {
+  border-bottom: 0;
+}
+
+.rowTitle {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.rowMeta {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-3);
+  font-size: 10px;
+}
+
+.switch {
+  flex-shrink: 0;
+  position: relative;
+  width: 34px;
+  height: 20px;
+  border-radius: var(--r-full);
+  background: var(--line-strong);
+}
+
+.switchOn {
+  background: var(--brand);
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.switchOn::after {
+  transform: translateX(14px);
+}
+
+.pushToast {
+  display: flex;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 10px 11px;
+  border-radius: var(--r-md);
+  background: rgba(27, 92, 255, 0.07);
+  border: 1px solid rgba(27, 92, 255, 0.22);
+}
+
+.pushIcon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  background: var(--brand);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 11px;
+}
+
+.pushTitle {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.pushBody {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-2);
+  font-size: 10px;
+}
+
+.sectionLabel {
+  display: block;
+  margin: 14px 0 2px;
+  color: var(--ink-3);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/* 하단 탭바 */
+.tabBar {
+  display: flex;
+  justify-content: space-around;
+  padding: 9px 10px 16px;
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.tab {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  color: var(--ink-3);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.tabOn {
+  color: var(--brand);
+}
+
+.cta {
+  display: grid;
+  place-items: center;
+  height: 34px;
+  margin-top: 12px;
+  border-radius: var(--r-full);
+  background: var(--brand);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
+}
