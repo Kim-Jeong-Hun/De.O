@@ -1,149 +1,117 @@
-# 프로젝트 초기 스캐폴딩 가이드
+# 프로젝트 초기 구성 및 실행
 
-이 문서는 `docs/최저가비교앱_개발_마일스톤.md`에서 정한 기술 스택을 기준으로, 로컬에서 pnpm workspace + Turborepo 모노레포를 실제로 생성하는 순서를 정리한 가이드입니다. 각 단계는 공식 스캐폴딩 도구를 사용하므로, 텍스트로 직접 만든 빈 파일보다 훨씬 안정적입니다.
+이 저장소는 `docs/최저가비교앱_개발_마일스톤.md`와 프로젝트 아키텍처 그림을 기준으로 초기 구조를 구성했습니다. 그림의 `price-app/`은 현재 저장소 루트인 `De.O/`에 해당합니다.
+
+## 현재 구성
+
+| 경로 | 구성 |
+|---|---|
+| `apps/mobile` | Expo Router. 로그인·회원가입, 홈·검색·알림·마이페이지 탭, 상품 상세 경로 |
+| `apps/api` | Express. 상태 확인 API와 기능별 라우터 골격 |
+| `apps/crawler` | Python Worker. 수집기·파서·작업·스케줄러·클라이언트 위치 |
+| `apps/landing` | Next.js App Router. 소개·개인정보 처리방침·이용약관 경로 |
+| `packages/db` | Prisma + MySQL 설정과 서버 전용 클라이언트 생성 함수 |
+| `packages/shared` | 모바일·API 공통 경로와 스키마·타입 파일 위치 |
+
+화면에는 준비 중 안내를 표시합니다. API는 `GET /health`만 구현되어 있으며 나머지 기능 라우터에는 핸들러가 없습니다. 내부 크롤러 라우터는 아직 서버에 연결하지 않았습니다.
+
+인증, 쇼핑몰 수집, 가격 비교, 알림, DB 모델은 후속 개발 대상입니다. `coupang.py`·`gmarket.py`는 그림에 맞춘 자리 표시자이며 대상 쇼핑몰 확정을 의미하지 않습니다. Worker의 저장 경로도 마일스톤 M3에서 결정합니다.
 
 ## 사전 준비
 
-다음 도구가 로컬에 설치되어 있어야 합니다.
+- Node.js 22.13 이상인 지원 LTS 버전
+- pnpm 10.34.5 (`package.json`의 `packageManager`에 고정)
+- Python 3.11 이상
+- uv
+- Git
+- DB 기능 개발 시 MySQL
 
-```
-node -v
-pnpm -v
-python3 -V
-git -v
-```
+pnpm이 전역 설치되어 있지 않다면 아래 모든 `pnpm` 명령을 `npx --yes pnpm@10.34.5`로 바꿔 실행할 수 있습니다. 예: `npx --yes pnpm@10.34.5 install --frozen-lockfile`.
 
-## 0단계. 저장소 클론
+## 최초 설치
 
-```
-git clone https://github.com/Kim-Jeong-Hun/De.O.git
-cd De.O
-```
+저장소 루트에서 실행합니다. 이미 클론한 저장소에서는 다시 클론하거나 `pnpm init`, `create-expo-app`, `create-next-app`을 실행하지 않습니다.
 
-## 1단계. 루트 모노레포 설정
-
-```
-pnpm init
+```powershell
+pnpm install --frozen-lockfile
+uv sync --project apps/crawler --locked
+pnpm --filter @de-o/shared build
+pnpm --filter @de-o/db build
 ```
 
-`package.json`을 아래와 같이 수정합니다.
+JS 의존성은 루트의 `pnpm-lock.yaml`, Python 의존성은 `apps/crawler/uv.lock`으로 관리합니다. Python 가상환경은 `apps/crawler/.venv`에 생성됩니다.
 
-```json
-{
-"name": "de-o",
-"private": true,
-"scripts": { "dev": "turbo run dev", "build": "turbo run build", "lint": "turbo run lint" },
-"devDependencies": { "turbo": "^2.0.0" }
-}
-```
+## 개발 실행
 
-pnpm-workspace.yaml 파일을 생성합니다.
-
-```yaml
-packages: ["apps/*", "packages/*"]
-```
-
-turbo.json 파일을 생성합니다.
-
-```json
-{
-"$schema": "https://turbo.build/schema.json",
-"tasks": { "dev": { "cache": false, "persistent": true }, "build": { "dependsOn": ["^build"], "outputs": ["dist/**", ".next/**"] }, "lint": {} }
-}
-```
-
-## 2단계. apps/mobile — Expo 모바일 앱
-
-```
-mkdir -p apps
-cd apps
-npx create-expo-app@latest mobile
-cd mobile
-npx expo install expo-router
-cd ../..
-```
-
-프로젝트가 생성되면, 마일스톤 문서의 화면 구조((auth)/login, (tabs)/search 등)에 맞춰 app/ 라우팅 폴더를 채워 나갑니다.
-
-## 3단계. apps/api — Express 백엔드
-
-```
-mkdir -p apps/api/src
-cd apps/api
-pnpm init
-pnpm add express
-pnpm add -D typescript @types/express @types/node tsx
-npx tsc --init
-cd ../..
-```
-
-## 4단계. apps/crawler — Python 크롤러 Worker
-
-```
-mkdir -p apps/crawler
-cd apps/crawler
-uv init --python 3.11
-uv add requests beautifulsoup4
-cd ../..
-```
-
-`uv`가 없다면 `pip install uv`로 설치하거나, `python3 -m venv .venv` + `pip install -r requirements.txt` 방식을 사용해도 됩니다.
-
-## 5단계. apps/landing — Next.js 소개 페이지
-
-```
-cd apps
-npx create-next-app@latest landing --typescript --app
-cd ..
-```
-
-## 6단계. packages/db — Prisma + MySQL
-
-```
-mkdir -p packages/db
-cd packages/db
-pnpm init
-pnpm add -D prisma
-pnpm add @prisma/client
-npx prisma init --datasource-provider mysql
-cd ../..
-```
-
-`packages/db/prisma/schema.prisma`에 상품, 가격 이력, 알림 모델을 정의합니다.
-
-## 7단계. packages/shared — 모바일-API 공통 계약
-
-```
-mkdir -p packages/shared/src
-cd packages/shared
-pnpm init
-pnpm add zod
-cd ../..
-```
-
-요청/응답 스키마와 타입을 여기에 정의하고, apps/mobile과 apps/api에서 워크스페이스 의존성으로 참조합니다.
-
-```
-pnpm add @de-o/shared --filter mobile
-pnpm add @de-o/shared --filter api
-```
-
-## 8단계. 설치 및 확인
-
-```
-pnpm install
+```powershell
 pnpm dev
 ```
 
-## 9단계. 커밋 및 푸시
+Turborepo가 공유 패키지를 먼저 빌드한 뒤 Expo·Express·Next.js 개발 서버를 실행합니다.
 
-main 브랜치는 룰셋으로 보호되어 있어 직접 push가 막혀 있습니다. 새 브랜치를 만들어 PR로 병합하세요.
+| 대상 | 기본 주소 / 실행 방식 |
+|---|---|
+| Expo | Metro 포트 8081. 실기기에서는 Expo 개발 서버 안내를 따릅니다. |
+| Express | `http://localhost:4000/health` |
+| Next.js | `http://localhost:3000` |
+| Python Worker | 아래 명령으로 별도 실행 |
 
+개별 앱만 실행할 수도 있습니다. 개별 실행 전에 최초 설치의 공유 패키지 빌드를 완료해야 합니다.
+
+```powershell
+pnpm dev:mobile
+pnpm dev:api
+pnpm dev:landing
+pnpm dev:crawler
 ```
-git checkout -b chore/scaffold-monorepo
-git add .
-git commit -m "chore: scaffold monorepo structure"
-git push -u origin chore/scaffold-monorepo
+
+Worker는 현재 준비 상태를 출력하고 종료합니다. 실제 수집이나 스케줄 실행은 하지 않습니다. 공유 패키지의 코드를 변경하면 해당 패키지를 다시 빌드합니다.
+
+## 환경 변수와 DB
+
+기본 화면과 `/health` 확인에는 DB 연결이 필요하지 않습니다.
+
+DB 개발을 시작할 때 PowerShell에서 예시를 복사하고 로컬 접속 정보를 입력합니다. 기존 `.env`가 있다면 덮어쓰지 말고 필요한 항목만 반영합니다.
+
+```powershell
+Copy-Item packages/db/.env.example packages/db/.env
+Copy-Item apps/api/.env.example apps/api/.env
 ```
 
-이후 GitHub에서 Pull Request를 생성해 main으로 병합합니다.
+- Prisma CLI는 `packages/db/.env`를 읽습니다.
+- API 실행 명령은 `apps/api/.env`를 읽습니다.
+- DB 클라이언트는 서버에서 `createDbClient()`를 호출할 때 생성됩니다.
+- 모바일과 shared에는 DB 접속 정보를 넣지 않습니다.
+
+Prisma 7의 연결 설정은 `packages/db/prisma.config.ts`에 있습니다. MySQL 드라이버로 `@prisma/adapter-mariadb`를 사용합니다.
+
+현재 스키마에는 모델이 없습니다. Prisma 7.10의 `prisma generate`로 모델 없는 클라이언트를 생성합니다. M2 데이터 검증 결과를 바탕으로 M3에서 모델을 정의한 뒤 개발용 DB에 첫 마이그레이션을 적용합니다.
+
+```powershell
+pnpm db:validate
+pnpm --filter @de-o/db migrate:dev --name init
+pnpm db:generate
+```
+
+마이그레이션 명령은 모델과 DB 연결을 준비한 뒤 실행합니다. 초기 폴더 생성 과정에서는 DB 생성·변경을 수행하지 않습니다.
+
+## 확인 명령
+
+```powershell
+pnpm typecheck
+pnpm lint
+pnpm build
+pnpm db:validate
+uv run --project apps/crawler python apps/crawler/src/main.py
+```
+
+`lint`는 현재 ESLint가 구성된 랜딩에 적용합니다. `typecheck`는 모든 TypeScript 패키지를 검사합니다. `build`는 API·공유 패키지·랜딩을 빌드하고 Expo의 웹 번들을 생성합니다. Android/iOS 설치 파일 빌드와 실기기 검증은 별도 작업입니다.
+
+## 구조 유지 규칙
+
+- Expo 화면은 그림과 동일하게 `apps/mobile/app/`에 둡니다.
+- 라우터 동작을 위해 그림에 생략된 `_layout.tsx`와 Next.js `layout.tsx`를 추가했습니다.
+- 아직 비어 있는 폴더의 `.gitkeep`은 Git에서 폴더를 유지하기 위한 파일입니다. 실제 파일을 추가하면 제거해도 됩니다.
+- 스토어 SVG는 출시 준비 중 자리 표시자입니다. 출시 전에 공식 배지와 실제 다운로드 링크로 교체합니다.
+- `node_modules`, 빌드 결과, Python 가상환경, Prisma 생성 코드, 비밀값은 Git에서 제외합니다.
+- 원래 SETUP.md의 공식 Expo·Next.js 생성 도구를 사용한 뒤 그림에 맞게 예제 경로와 파일을 정리했습니다.
