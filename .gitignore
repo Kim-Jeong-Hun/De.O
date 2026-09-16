@@ -141,3 +141,21 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Turborepo task cache
+.turbo/
+
+# Python virtual environments and bytecode
+.venv/
+__pycache__/
+*.py[cod]
+
+# Expo local state and generated types
+.expo/
+/apps/mobile/expo-env.d.ts
+
+# Next.js generated type references
+/apps/landing/next-env.d.ts
+
+# Prisma generated client (keep schema and migrations tracked)
+/packages/db/src/generated/
