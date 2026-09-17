@@ -14,21 +14,21 @@ type Tab = {
 const TABS: Tab[] = [
   {
     key: "compare",
-    title: "가격 비교 화면",
+    title: "같은 상품, 같은 조건으로",
     desc: "같은 옵션의 상품을 쇼핑몰별로 나란히 놓고, 상품가와 배송비를 나눠 보여줍니다. 정렬 기준은 총액입니다.",
     points: ["총액 정렬", "배송비 분리 표시", "수집 시각 안내"],
   },
   {
     key: "history",
-    title: "가격 추이 화면",
-    desc: "지나온 가격을 그래프로 봅니다. 수집하지 못한 기간은 0원으로 채우지 않고 비워 두어, 없는 가격을 만들지 않습니다.",
-    points: ["7·30·90일", "기간 내 최저와 평균", "빈 구간 표시"],
+    title: "가격의 흐름을 한눈에",
+    desc: "오늘 가격만으로는 알기 어려운 구매 타이밍. 기록된 가격의 변화를 살펴보고, 지금이 나에게 좋은 가격인지 확인해 보세요.",
+    points: ["기간별 추이 예시", "기간 내 최저와 평균", "기록된 가격 확인"],
   },
   {
     key: "alerts",
-    title: "목표 가격 알림 화면",
-    desc: "목표 가격을 정해 두면 총액이 그 아래로 내려갔을 때 알립니다. 같은 조건으로 반복 발송하지 않고, 해제하면 곧바로 멈춥니다.",
-    points: ["중복 발송 방지", "해제 즉시 중단", "알림에서 상세로 이동"],
+    title: "원하는 가격이 되면, 톡",
+    desc: "계속 들여다보지 않아도 괜찮도록. 마음에 둔 상품의 목표 가격을 설정하고, 도착한 알림에서 상품을 확인하는 흐름을 준비합니다.",
+    points: ["목표 가격 설정", "알림 켜기·끄기", "상품 상세로 이동"],
   },
 ];
 
@@ -41,9 +41,9 @@ export default function Showcase() {
       <div className="container">
         <div className={styles.head}>
           <span className={styles.eyebrowDark}>화면 미리보기</span>
-          <h2 className={styles.title}>화면으로 미리 보기</h2>
+          <h2 className={styles.title}>쇼핑의 좋은 타이밍,<br />De.O에서 만나보세요.</h2>
           <p className={styles.lead}>
-            개발 중인 디자인입니다. 항목을 누르면 해당 화면을 볼 수 있습니다.
+            개발 예정 기능의 예시입니다. 아래 항목을 눌러 미리 둘러보세요.
           </p>
         </div>
 
@@ -58,11 +58,22 @@ export default function Showcase() {
                   role="tab"
                   id={`screen-tab-${tab.key}`}
                   aria-selected={selected}
+                  tabIndex={selected ? 0 : -1}
                   aria-controls="screen-panel"
                   className={`${styles.tab} ${
                     selected ? styles.tabActive : ""
                   }`}
                   onClick={() => setActive(tab.key)}
+                  onKeyDown={(event) => {
+                    const next = event.key === "ArrowDown" || event.key === "ArrowRight" ? (index + 1) % TABS.length
+                      : event.key === "ArrowUp" || event.key === "ArrowLeft" ? (index + TABS.length - 1) % TABS.length
+                      : event.key === "Home" ? 0 : event.key === "End" ? TABS.length - 1 : null;
+                    if (next !== null) {
+                      event.preventDefault();
+                      setActive(TABS[next].key);
+                      document.getElementById(`screen-tab-${TABS[next].key}`)?.focus();
+                    }
+                  }}
                 >
                   <span className={styles.tabTop}>
                     <span className={styles.tabIndex}>{index + 1}</span>
@@ -89,12 +100,13 @@ export default function Showcase() {
             className={styles.stage}
             id="screen-panel"
             role="tabpanel"
+            tabIndex={0}
             aria-labelledby={`screen-tab-${activeTab.key}`}
           >
             <div>
               <PhoneMockup screen={activeTab.key} />
               <p className={styles.caption}>
-                실제 앱과 다를 수 있는 디자인 시안입니다
+                가상의 상품·가격을 사용한 디자인 시안입니다
               </p>
             </div>
           </div>

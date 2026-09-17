@@ -25,7 +25,7 @@ export default function LegalPage({
   footerNote,
 }: LegalPageProps) {
   return (
-    <main className={styles.page}>
+    <main id="main-content" className={styles.page}>
       <div className="container">
         <Link href="/" className={styles.crumb}>
           <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">

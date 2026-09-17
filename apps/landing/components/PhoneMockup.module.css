@@ -7,7 +7,7 @@
   aspect-ratio: 300 / 620;
   padding: 11px;
   border-radius: 46px;
-  background: linear-gradient(160deg, #2b3350, #0b1020 60%);
+  background: linear-gradient(160deg, #4e5848, #252d25 60%);
   box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
@@ -19,6 +19,7 @@
   overflow: hidden;
   border-radius: 36px;
   background: #ffffff;
+  color: var(--ink);
   font-size: 12px;
   line-height: 1.45;
   letter-spacing: -0.02em;
@@ -32,7 +33,7 @@
   width: 84px;
   height: 22px;
   border-radius: var(--r-full);
-  background: #0b1020;
+  background: #252d25;
   z-index: 3;
 }
 
@@ -334,13 +335,13 @@
   margin-top: 12px;
   padding: 12px;
   border-radius: var(--r-md);
-  background: linear-gradient(150deg, #10224f, #0b1020);
+  background: linear-gradient(150deg, #414e38, #252d25);
   color: #fff;
 }
 
 .alertLabel {
   display: block;
-  color: #9fb2e6;
+  color: #c6d3b8;
   font-size: 10.5px;
   font-weight: 700;
 }
@@ -354,7 +355,7 @@
 
 .alertHint {
   margin-top: 6px;
-  color: #a8b8dd;
+  color: #c6d3b8;
   font-size: 10px;
 }
 
@@ -370,7 +371,7 @@
   position: absolute;
   inset: 0 38% 0 0;
   border-radius: var(--r-full);
-  background: #00e0a4;
+  background: #adc693;
 }
 
 .sliderKnob {
@@ -445,8 +446,8 @@
   margin-top: 12px;
   padding: 10px 11px;
   border-radius: var(--r-md);
-  background: rgba(27, 92, 255, 0.07);
-  border: 1px solid rgba(27, 92, 255, 0.22);
+  background: rgba(223, 89, 39, 0.07);
+  border: 1px solid rgba(223, 89, 39, 0.22);
 }
 
 .pushIcon {

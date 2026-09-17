@@ -134,7 +134,7 @@ function CompareScreen() {
         <Offer
           mall="A 쇼핑몰"
           mallInitial="A"
-          mallColor="#1b5cff"
+          mallColor="#df5927"
           total="89,400원"
           item="87,400원"
           shipping="2,000원"
@@ -143,7 +143,7 @@ function CompareScreen() {
         <Offer
           mall="B 쇼핑몰"
           mallInitial="B"
-          mallColor="#7c4dff"
+          mallColor="#52755a"
           total="91,900원"
           item="91,900원"
           shipping="무료"
@@ -217,8 +217,8 @@ function PriceChart() {
     >
       <defs>
         <linearGradient id="deo-area" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1b5cff" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#1b5cff" stopOpacity="0" />
+          <stop offset="0%" stopColor="#df5927" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#df5927" stopOpacity="0" />
         </linearGradient>
       </defs>
 
@@ -258,7 +258,7 @@ function PriceChart() {
       <polyline
         points="6,34 26,30 46,41 66,36 86,48 106,44 120,50"
         fill="none"
-        stroke="#1b5cff"
+        stroke="#df5927"
         strokeWidth="2.4"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -266,7 +266,7 @@ function PriceChart() {
       <polyline
         points="146,46 166,58 186,52 206,63 226,68"
         fill="none"
-        stroke="#1b5cff"
+        stroke="#df5927"
         strokeWidth="2.4"
         strokeLinecap="round"
         strokeLinejoin="round"
