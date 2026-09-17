@@ -39,7 +39,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #b7cc98;
+  background: #6fd0ae;
 }
 
 .colTitle {
@@ -73,7 +73,7 @@
 
 .note {
   max-width: 620px;
-  color: #a9b5a2;
+  color: #bba8b4;
 }
 
 @media (max-width: 720px) {

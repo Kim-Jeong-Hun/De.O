@@ -1,7 +1,7 @@
-.wrap { background: #faf8f4; }
+.wrap { background: #fdf8f8; }
 .layout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
-.frame { aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; border: 1px solid #e5dfd5; border-radius: 24px; background: #f0ece4; color: #5f6658; }
-.play { display: grid; place-items: center; width: 62px; height: 62px; background: #fffaf1; border-radius: 50%; font-size: 35px; padding-left: 4px; color: #89917f; }
+.frame { aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; border: 1px solid #ead9e0; border-radius: 24px; background: #f6eaee; color: #685764; }
+.play { display: grid; place-items: center; width: 62px; height: 62px; background: #fef7f9; border-radius: 50%; font-size: 35px; padding-left: 4px; color: #998892; }
 .frame strong { font-size: 22px; letter-spacing: -.04em; }
-.frame > span:last-child { font-size: 12px; color: #787b70; }
+.frame > span:last-child { font-size: 12px; color: #857480; }
 @media (max-width: 760px) { .layout { grid-template-columns: 1fr; gap: 30px; } }

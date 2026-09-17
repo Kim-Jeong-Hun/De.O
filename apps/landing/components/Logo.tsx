@@ -6,7 +6,7 @@ type LogoProps = {
 
 /** De.O 워드마크. 하강하는 가격 선을 기호로 사용합니다. */
 export default function Logo({ onDark = false, size = 36 }: LogoProps) {
-  const ink = onDark ? "#ffffff" : "#0d1220";
+  const ink = onDark ? "#ffffff" : "#2d2029";
 
   return (
     <span
@@ -27,7 +27,7 @@ export default function Logo({ onDark = false, size = 36 }: LogoProps) {
         aria-hidden="true"
         focusable="false"
       >
-        <rect width="32" height="32" rx="9" fill="#df5927" />
+        <rect width="32" height="32" rx="9" fill="#c2416a" />
         <path
           d="M7 11.5 13 17l4-3.5 8 7"
           fill="none"
@@ -36,7 +36,7 @@ export default function Logo({ onDark = false, size = 36 }: LogoProps) {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <circle cx="25" cy="20.5" r="3" fill="#ffe3a9" />
+        <circle cx="25" cy="20.5" r="3" fill="#ffdcb4" />
       </svg>
       De.O
     </span>
