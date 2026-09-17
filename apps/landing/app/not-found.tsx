@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <main
+      id="main-content"
       style={{
         display: "grid",
         placeItems: "center",
@@ -34,7 +35,7 @@ export default function NotFound() {
           }}
         >
           주소가 바뀌었거나 아직 준비되지 않은 페이지일 수 있습니다. 홈에서
-          기능 소개와 출시 계획을 확인해 주세요.
+          기능 소개와 출시 안내를 확인해 주세요.
         </p>
         <Link
           href="/"

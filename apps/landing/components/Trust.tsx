@@ -26,11 +26,11 @@ export default function Trust() {
         <div className="sectionHead">
           <span className="eyebrow">가격 기준</span>
           <h2 className="sectionTitle">
-            최저가는 조건을 맞춘 뒤에야 의미가 있습니다
+            싼 가격보다 먼저,<br />믿을 수 있는 비교.
           </h2>
           <p className="sectionLead">
-            무엇을 가격으로 볼지 정하지 않으면 잘못된 최저가가 나옵니다.
-            De.O가 지키는 기준을 먼저 공개합니다.
+            De.O가 준비하는 가격 비교의 원칙입니다.
+            상세 기준은 실제 데이터 검증을 거쳐 확정할 예정이에요.
           </p>
         </div>
 

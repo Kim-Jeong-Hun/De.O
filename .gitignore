@@ -152,3 +152,6 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 packages/db/src/generated/
+
+# Vercel local project linking
+.vercel/

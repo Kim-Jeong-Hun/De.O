@@ -3,11 +3,10 @@ import Logo from "./Logo";
 import styles from "./SiteFooter.module.css";
 
 const SECTION_LINKS = [
-  { href: "#features", label: "주요 기능" },
-  { href: "#how", label: "사용 방법" },
-  { href: "#screens", label: "화면 미리보기" },
-  { href: "#roadmap", label: "출시 계획" },
-  { href: "#faq", label: "자주 묻는 질문" },
+  { href: "/#features", label: "De.O 소개" },
+  { href: "/#how", label: "사용 방법" },
+  { href: "/#screens", label: "화면 미리보기" },
+  { href: "/#faq", label: "자주 묻는 질문" },
 ];
 
 export default function SiteFooter() {
@@ -19,7 +18,7 @@ export default function SiteFooter() {
             <Logo onDark />
             <p className={styles.aboutText}>
               같은 상품의 가격을 여러 쇼핑몰에서 모아, 옵션과 배송비까지 맞춘
-              뒤 비교하는 앱입니다. 2인 팀이 만들고 있습니다.
+              뒤 비교하는 앱을 만들고 있습니다.
             </p>
             <span className={styles.status}>
               <span className={styles.dot} />
@@ -32,7 +31,7 @@ export default function SiteFooter() {
             <ul className={styles.list}>
               {SECTION_LINKS.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href}>{item.label}</a>
+                  <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -48,7 +47,7 @@ export default function SiteFooter() {
                 <Link href="/terms">이용약관</Link>
               </li>
               <li>
-                <a href="#download">다운로드 안내</a>
+                <Link href="/#download">다운로드 안내</Link>
               </li>
             </ul>
           </div>

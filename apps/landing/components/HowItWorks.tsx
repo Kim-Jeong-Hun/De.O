@@ -33,10 +33,9 @@ export default function HowItWorks() {
       <div className="container">
         <div className="sectionHead center">
           <span className="eyebrow">사용 방법</span>
-          <h2 className="sectionTitle">네 단계면 충분합니다</h2>
+          <h2 className="sectionTitle">찾고, 비교하고, 기다리면 끝.</h2>
           <p className="sectionLead">
-            여러 창을 열어 가격을 옮겨 적을 필요가 없습니다. 검색부터 알림까지
-            앱 안에서 이어집니다.
+            검색부터 반가운 알림까지, 하나의 앱에서 이어질 쇼핑을 미리 만나보세요.
           </p>
         </div>
 

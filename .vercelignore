@@ -1,0 +1,12 @@
+# Vercel builds apps/landing (Root Directory: apps/landing).
+# Workspace manifests must stay included so pnpm can resolve pnpm-lock.yaml.
+**/node_modules/
+**/.next/
+**/.turbo/
+**/dist/
+**/__pycache__/
+**/.env
+**/.env.*
+**/*.tsbuildinfo
+.pnpm-store/
+.cache/
