@@ -17,8 +17,8 @@ export default function SiteFooter() {
           <div className={styles.about}>
             <Logo onDark />
             <p className={styles.aboutText}>
-              같은 상품의 가격을 여러 쇼핑몰에서 모아, 옵션과 배송비까지 맞춘
-              뒤 비교하는 앱을 만들고 있습니다.
+              같은 화장품의 가격을 여러 쇼핑몰에서 모아, 용량·호수와 배송비까지
+              맞춘 뒤 비교하는 앱을 만들고 있습니다.
             </p>
             <span className={styles.status}>
               <span className={styles.dot} />

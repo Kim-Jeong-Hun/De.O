@@ -3,7 +3,7 @@ import styles from "./HowItWorks.module.css";
 const STEPS = [
   {
     title: "상품을 찾습니다",
-    desc: "검수해 등록한 상품 중에서 찾습니다. 용량과 색상 같은 옵션을 고르면 비교 대상이 정해집니다.",
+    desc: "검수해 등록한 화장품 중에서 찾습니다. 용량과 호수 같은 옵션을 고르면 비교 대상이 정해집니다.",
     tag: "검색",
     tone: "tagMuted",
   },
@@ -32,7 +32,7 @@ export default function HowItWorks() {
     <section className={`section ${styles.wrap}`} id="how">
       <div className="container">
         <div className="sectionHead center">
-          <span className="eyebrow">사용 방법</span>
+          <span className="eyebrowChip">사용 방법</span>
           <h2 className="sectionTitle">찾고, 비교하고, 기다리면 끝.</h2>
           <p className="sectionLead">
             검색부터 반가운 알림까지, 하나의 앱에서 이어질 쇼핑을 미리 만나보세요.
