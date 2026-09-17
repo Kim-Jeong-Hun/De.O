@@ -6,8 +6,8 @@ const ITEMS = [
     a: "1차 출시에서는 데이터 이용 조건을 확인한 두 곳을 비교합니다. 어느 쇼핑몰인지는 제공 조건 확인이 끝나는 대로 이 페이지에 공개합니다. 비교 대상은 이후 단계적으로 늘릴 계획입니다.",
   },
   {
-    q: "어떤 상품을 찾아볼 수 있나요?",
-    a: "첫 출시에서는 한 가지 카테고리의 상품 30~50개로 시작할 계획입니다. 같은 모델·옵션·구성인지 확인해 비교할 수 있도록 준비하고 있으며, 대상 카테고리와 상품은 데이터 검증 후 확정합니다.",
+    q: "어떤 화장품을 찾아볼 수 있나요?",
+    a: "첫 출시에서는 스킨케어 한 가지 카테고리의 상품 30~50개로 시작할 계획입니다. 같은 용량·호수·기획 구성인지 확인해 비교할 수 있도록 준비하고 있으며, 대상 카테고리와 상품은 데이터 검증 후 확정합니다.",
   },
   {
     q: "앱에 보이는 가격이 실제 결제 금액과 다를 수 있나요?",
@@ -41,7 +41,7 @@ export default function Faq() {
       <div className="container">
         <div className={styles.layout}>
           <div className={styles.aside}>
-            <span className="eyebrow">자주 묻는 질문</span>
+            <span className="eyebrowChip">자주 묻는 질문</span>
             <h2 className="sectionTitle">궁금한 게<br />있으신가요?</h2>
             <div className={styles.asideCard}>
               <h3 className={styles.asideTitle}>아직 정해지지 않은 것</h3>

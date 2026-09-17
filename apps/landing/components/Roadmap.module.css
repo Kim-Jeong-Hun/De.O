@@ -18,9 +18,9 @@
 }
 
 .current {
-  border-color: rgba(27, 92, 255, 0.45);
-  background: linear-gradient(180deg, #f2f6ff, #ffffff);
-  box-shadow: 0 10px 30px rgba(27, 92, 255, 0.12);
+  border-color: rgba(194, 65, 106, 0.45);
+  background: linear-gradient(180deg, #f7f0f3, #ffffff);
+  box-shadow: 0 10px 30px rgba(194, 65, 106, 0.12);
 }
 
 .marker {
@@ -43,7 +43,7 @@
 
 .dotCurrent {
   background: var(--brand);
-  box-shadow: 0 0 0 4px rgba(27, 92, 255, 0.18);
+  box-shadow: 0 0 0 4px rgba(194, 65, 106, 0.18);
 }
 
 .phase {

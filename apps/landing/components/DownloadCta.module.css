@@ -1,14 +1,14 @@
-.wrap { padding-block: 40px 96px; background: #faf8f4; }
-.card { position: relative; overflow: hidden; border-radius: 28px; background: #efe9dc; padding: 60px 64px; }
-.status { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: #9a4829; }
+.wrap { padding-block: 40px 96px; background: #fdf8f8; }
+.card { position: relative; overflow: hidden; border-radius: var(--r-xl); background: linear-gradient(140deg, var(--brand-soft) 0%, #f7eef7 52%, var(--accent-soft) 100%); padding: 64px; }
+.status { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: #8e2f52; }
 .card h2 { position: relative; z-index: 1; font-size: clamp(30px, 4vw, 44px); margin-top: 20px; line-height: 1.35; }
-.card > p { position: relative; z-index: 1; margin-top: 20px; color: #69665d; font-size: 15px; line-height: 1.9; }
+.card > p { position: relative; z-index: 1; margin-top: 20px; color: #736270; font-size: 15px; line-height: 1.9; }
 .badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; position: relative; z-index: 1; }
-.badges button { display: flex; gap: 12px; align-items: center; text-align: left; border: 1px solid #cec9bc; border-radius: 12px; padding: 11px 20px; background: #faf8f0; color: #57594f; font-family: inherit; cursor: not-allowed; }
+.badges button { display: flex; gap: 12px; align-items: center; text-align: left; border: 1px solid #d9c8ce; border-radius: 12px; padding: 11px 20px; background: #fdf8f8; color: #5f4e5b; font-family: inherit; cursor: not-allowed; }
 .badges button > span:first-child { font-size: 30px; line-height: 1; }
-.badges small { display: block; font-size: 10px; color: #77786c; }
+.badges small { display: block; font-size: 10px; color: #7a6b73; }
 .badges b { font-size: 17px; }
-.hint { display: block; position: relative; z-index: 1; font-size: 12px; color: #747366; margin-top: 17px; }
+.hint { display: block; position: relative; z-index: 1; font-size: 12px; color: #7f6e79; margin-top: 17px; }
 .mark { position: absolute; right: 68px; top: 120px; transform: rotate(-12deg); opacity: .85; }
 @media (max-width: 900px) { .mark { right: -60px; top: 70px; opacity: .1; } }
 @media (max-width: 600px) { .wrap { padding-bottom: 55px; } .card { padding: 38px 24px; } .badges { gap: 8px; } .badges button { padding: 10px 12px; gap: 8px; } }

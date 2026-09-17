@@ -107,7 +107,7 @@ function CompareScreen() {
 
       <div className={styles.searchBar}>
         <SearchIcon />
-        에어프라이어 5.5L
+        수분 진정 앰플 50ml
       </div>
 
       <div className={styles.chips}>
@@ -118,14 +118,14 @@ function CompareScreen() {
 
       <div className={styles.product}>
         <span className={styles.thumb}>
-          <BoxIcon />
+          <BottleIcon />
         </span>
         <span>
           <span className={styles.productName}>
-            데오 에어프라이어 5.5L 블랙
+            데오 수분 진정 앰플 50ml
           </span>
           <span className={styles.productMeta}>
-            5.5L · 블랙 · 동일 옵션으로 비교
+            50ml · 단품 · 동일 옵션으로 비교
           </span>
         </span>
       </div>
@@ -134,20 +134,20 @@ function CompareScreen() {
         <Offer
           mall="A 쇼핑몰"
           mallInitial="A"
-          mallColor="#df5927"
-          total="89,400원"
-          item="87,400원"
-          shipping="2,000원"
+          mallColor="#c2416a"
+          total="29,400원"
+          item="26,900원"
+          shipping="2,500원"
           best
         />
         <Offer
           mall="B 쇼핑몰"
           mallInitial="B"
-          mallColor="#52755a"
-          total="91,900원"
-          item="91,900원"
+          mallColor="#8a6bb0"
+          total="31,000원"
+          item="31,000원"
           shipping="무료"
-          note="+2,500원"
+          note="+1,600원"
         />
       </div>
 
@@ -167,8 +167,8 @@ function HistoryScreen() {
       <div className={styles.priceHero}>
         <span className={styles.productMeta}>현재 최저 총액</span>
         <span className={styles.priceHeroValue}>
-          <span className={styles.big}>89,400원</span>
-          <span className={styles.down}>▼ 3,500</span>
+          <span className={styles.big}>29,400원</span>
+          <span className={styles.down}>▼ 1,800</span>
         </span>
       </div>
 
@@ -194,14 +194,14 @@ function HistoryScreen() {
           <span className={styles.rowTitle}>기간 내 최저</span>
           <span className={styles.rowMeta}>9월 2일 · A 쇼핑몰</span>
         </span>
-        <span className={styles.rowTitle}>87,900원</span>
+        <span className={styles.rowTitle}>28,600원</span>
       </div>
       <div className={styles.rowItem}>
         <span>
           <span className={styles.rowTitle}>기간 내 평균</span>
           <span className={styles.rowMeta}>실제 수집한 27일 기준</span>
         </span>
-        <span className={styles.rowTitle}>93,200원</span>
+        <span className={styles.rowTitle}>31,700원</span>
       </div>
     </div>
   );
@@ -217,8 +217,8 @@ function PriceChart() {
     >
       <defs>
         <linearGradient id="deo-area" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#df5927" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#df5927" stopOpacity="0" />
+          <stop offset="0%" stopColor="#c2416a" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#c2416a" stopOpacity="0" />
         </linearGradient>
       </defs>
 
@@ -229,19 +229,19 @@ function PriceChart() {
           y1={y}
           x2="240"
           y2={y}
-          stroke="#eef1f7"
+          stroke="#f0e4e7"
           strokeWidth="1"
         />
       ))}
 
       {/* 수집하지 못한 구간 */}
-      <rect x="120" y="4" width="26" height="84" fill="#f5f7fb" />
+      <rect x="120" y="4" width="26" height="84" fill="#f7f0f3" />
       <line
         x1="133"
         y1="6"
         x2="133"
         y2="88"
-        stroke="#cfd6e6"
+        stroke="#d6c2ca"
         strokeWidth="1"
         strokeDasharray="3 3"
       />
@@ -258,7 +258,7 @@ function PriceChart() {
       <polyline
         points="6,34 26,30 46,41 66,36 86,48 106,44 120,50"
         fill="none"
-        stroke="#df5927"
+        stroke="#c2416a"
         strokeWidth="2.4"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -266,14 +266,14 @@ function PriceChart() {
       <polyline
         points="146,46 166,58 186,52 206,63 226,68"
         fill="none"
-        stroke="#df5927"
+        stroke="#c2416a"
         strokeWidth="2.4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
 
-      <circle cx="226" cy="68" r="4.5" fill="#00a878" />
-      <circle cx="226" cy="68" r="8" fill="#00a878" fillOpacity="0.18" />
+      <circle cx="226" cy="68" r="4.5" fill="#1f8a6d" />
+      <circle cx="226" cy="68" r="8" fill="#1f8a6d" fillOpacity="0.18" />
     </svg>
   );
 }
@@ -288,13 +288,13 @@ function AlertsScreen() {
 
       <div className={styles.alertCard}>
         <span className={styles.alertLabel}>목표 가격</span>
-        <div className={styles.alertValue}>85,000원</div>
+        <div className={styles.alertValue}>28,000원</div>
         <div className={styles.slider}>
           <span className={styles.sliderFill} />
           <span className={styles.sliderKnob} />
         </div>
         <p className={styles.alertHint}>
-          현재 최저 총액보다 4,400원 낮습니다
+          현재 최저 총액보다 1,400원 낮습니다
         </p>
       </div>
 
@@ -328,7 +328,7 @@ function AlertsScreen() {
         <span>
           <span className={styles.pushTitle}>목표 가격에 도달했습니다</span>
           <span className={styles.pushBody}>
-            에어프라이어 5.5L · A 쇼핑몰 84,900원
+            수분 진정 앰플 50ml · A 쇼핑몰 27,900원
           </span>
         </span>
       </div>
@@ -418,22 +418,23 @@ function HeartIcon() {
   );
 }
 
-function BoxIcon() {
+function BottleIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
       <path
-        d="M12 3 20 7v10l-8 4-8-4V7l8-4Z"
+        d="M10 2.8h4M10.6 2.8v3.1l-2.5 2.6A3 3 0 0 0 7.3 10.6v8A2.6 2.6 0 0 0 9.9 21.2h4.2a2.6 2.6 0 0 0 2.6-2.6v-8a3 3 0 0 0-.8-2.1l-2.5-2.6V2.8"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M4 7l8 4 8-4M12 11v10"
+        d="M7.5 13.4h9"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"
-        strokeLinejoin="round"
+        strokeLinecap="round"
       />
     </svg>
   );

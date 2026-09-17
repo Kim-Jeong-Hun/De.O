@@ -3,7 +3,7 @@ import styles from "./Trust.module.css";
 const RULES = [
   {
     title: "옵션이 같을 때만 비교합니다",
-    desc: "이름이 비슷해도 용량과 수량, 구성품이 다르면 다른 상품입니다. 초기 상품은 팀이 직접 확인해 연결합니다.",
+    desc: "이름이 비슷해도 용량과 호수, 기획 구성이 다르면 다른 상품입니다. 초기 상품은 팀이 직접 확인해 연결합니다.",
   },
   {
     title: "배송비를 더한 총액이 기준입니다",
@@ -24,7 +24,7 @@ export default function Trust() {
     <section className="section" id="trust">
       <div className="container">
         <div className="sectionHead">
-          <span className="eyebrow">가격 기준</span>
+          <span className="eyebrowChip">가격 기준</span>
           <h2 className="sectionTitle">
             싼 가격보다 먼저,<br />믿을 수 있는 비교.
           </h2>
@@ -68,10 +68,10 @@ export default function Trust() {
               <span>
                 <span className={styles.stateTitle}>정상 수집</span>
                 <span className={styles.stateDesc}>
-                  오늘 09:20 · 상품가 87,400 + 배송 2,000
+                  오늘 09:20 · 상품가 26,900 + 배송 2,500
                 </span>
               </span>
-              <span className={styles.stateValue}>89,400원</span>
+              <span className={styles.stateValue}>29,400원</span>
             </div>
 
             <div className={styles.state}>
@@ -82,7 +82,7 @@ export default function Trust() {
                 </span>
               </span>
               <span className={`${styles.stateValue} ${styles.muted}`}>
-                91,900원 +α
+                31,000원 +α
               </span>
             </div>
 

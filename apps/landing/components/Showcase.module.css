@@ -15,8 +15,8 @@
   border-radius: 50%;
   background: radial-gradient(
     closest-side,
-    rgba(135, 157, 115, 0.35),
-    rgba(135, 157, 115, 0)
+    rgba(138, 107, 176, 0.35),
+    rgba(138, 107, 176, 0)
   );
   pointer-events: none;
 }
@@ -33,7 +33,7 @@
   padding: 5px 12px;
   border: 1px solid var(--line-ink);
   border-radius: var(--r-full);
-  color: #cfdec3;
+  color: #d9c4d3;
   font-size: 13px;
   font-weight: 700;
 }
@@ -80,11 +80,11 @@
 }
 
 .tabActive {
-  border-color: rgba(135, 157, 115, 0.7);
+  border-color: rgba(138, 107, 176, 0.7);
   background: linear-gradient(
     120deg,
-    rgba(135, 157, 115, 0.24),
-    rgba(135, 157, 115, 0.06)
+    rgba(138, 107, 176, 0.24),
+    rgba(138, 107, 176, 0.06)
   );
 }
 
@@ -135,7 +135,7 @@
   padding: 4px 10px;
   border-radius: var(--r-full);
   background: rgba(255, 255, 255, 0.08);
-  color: #d8e1d0;
+  color: #e0cddb;
   font-size: 12.5px;
   font-weight: 700;
 }
@@ -147,7 +147,7 @@
 
 .caption {
   margin-top: 20px;
-  color: #b9c2b5;
+  color: #cdbac4;
   font-size: 12.5px;
   text-align: center;
 }

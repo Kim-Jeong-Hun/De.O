@@ -7,7 +7,7 @@
   aspect-ratio: 300 / 620;
   padding: 11px;
   border-radius: 46px;
-  background: linear-gradient(160deg, #4e5848, #252d25 60%);
+  background: linear-gradient(160deg, #4a3746, #2d2029 60%);
   box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
@@ -33,7 +33,7 @@
   width: 84px;
   height: 22px;
   border-radius: var(--r-full);
-  background: #252d25;
+  background: #2d2029;
   z-index: 3;
 }
 
@@ -143,10 +143,10 @@
   width: 46px;
   height: 46px;
   border-radius: 10px;
-  background: linear-gradient(145deg, #dfe6f7, #f4f6fc);
+  background: linear-gradient(145deg, #ead9e0, #f7f0f3);
   display: grid;
   place-items: center;
-  color: #94a0bd;
+  color: #9a8890;
 }
 
 .productName {
@@ -178,9 +178,9 @@
 }
 
 .offerBest {
-  border-color: rgba(0, 168, 120, 0.55);
-  background: linear-gradient(180deg, #f2fbf8, #ffffff);
-  box-shadow: 0 6px 16px rgba(0, 168, 120, 0.12);
+  border-color: rgba(31, 138, 109, 0.55);
+  background: linear-gradient(180deg, #e8f6f1, #ffffff);
+  box-shadow: 0 6px 16px rgba(31, 138, 109, 0.12);
 }
 
 .offerTop {
@@ -335,13 +335,13 @@
   margin-top: 12px;
   padding: 12px;
   border-radius: var(--r-md);
-  background: linear-gradient(150deg, #414e38, #252d25);
+  background: linear-gradient(150deg, #3d2d38, #2d2029);
   color: #fff;
 }
 
 .alertLabel {
   display: block;
-  color: #c6d3b8;
+  color: #cdbac4;
   font-size: 10.5px;
   font-weight: 700;
 }
@@ -355,7 +355,7 @@
 
 .alertHint {
   margin-top: 6px;
-  color: #c6d3b8;
+  color: #cdbac4;
   font-size: 10px;
 }
 
@@ -371,7 +371,7 @@
   position: absolute;
   inset: 0 38% 0 0;
   border-radius: var(--r-full);
-  background: #adc693;
+  background: #c9a7bd;
 }
 
 .sliderKnob {
@@ -446,8 +446,8 @@
   margin-top: 12px;
   padding: 10px 11px;
   border-radius: var(--r-md);
-  background: rgba(223, 89, 39, 0.07);
-  border: 1px solid rgba(223, 89, 39, 0.22);
+  background: rgba(194, 65, 106, 0.07);
+  border: 1px solid rgba(194, 65, 106, 0.22);
 }
 
 .pushIcon {
