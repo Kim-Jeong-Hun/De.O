@@ -9,11 +9,11 @@
 | `apps/mobile` | Expo Router. 로그인·회원가입, 홈·검색·알림·마이페이지 탭, 상품 상세 경로 |
 | `apps/api` | Express. 상태 확인 API와 기능별 라우터 골격 |
 | `apps/crawler` | Python Worker. 수집기·파서·작업·스케줄러·클라이언트 위치 |
-| `apps/landing` | Next.js App Router. 소개·개인정보 처리방침·이용약관 경로 |
+| `apps/landing` | Next.js App Router. 소개 섹션·준비 단계 법적 안내, CSS Modules·Pretendard·디자인 토큰, Vercel 배포 설정 |
 | `packages/db` | Prisma + MySQL 설정과 서버 전용 클라이언트 생성 함수 |
 | `packages/shared` | 모바일·API 공통 경로와 스키마·타입 파일 위치 |
 
-화면에는 준비 중 안내를 표시합니다. API는 `GET /health`만 구현되어 있으며 나머지 기능 라우터에는 핸들러가 없습니다. 내부 크롤러 라우터는 아직 서버에 연결하지 않았습니다.
+모바일 화면에는 준비 중 안내를 표시합니다. 랜딩에는 소개 섹션이 구현되어 있지만 개인정보 처리방침·이용약관은 준비 단계입니다. API는 `GET /health`만 구현되어 있으며 나머지 기능 라우터에는 핸들러가 없습니다. 내부 크롤러 라우터는 아직 서버에 연결하지 않았습니다.
 
 인증, 쇼핑몰 수집, 가격 비교, 알림, DB 모델은 후속 개발 대상입니다. `coupang.py`·`gmarket.py`는 그림에 맞춘 자리 표시자이며 대상 쇼핑몰 확정을 의미하지 않습니다. Worker의 저장 경로도 마일스톤 M3에서 결정합니다.
 
@@ -26,7 +26,21 @@
 - Git
 - DB 기능 개발 시 MySQL
 
-pnpm이 전역 설치되어 있지 않다면 아래 모든 `pnpm` 명령을 `npx --yes pnpm@10.34.5`로 바꿔 실행할 수 있습니다. 예: `npx --yes pnpm@10.34.5 install --frozen-lockfile`.
+먼저 `pnpm --version`으로 `10.34.5` 실행을 확인합니다. 스크립트 내부에서도 pnpm을 호출하므로 부모 명령만 실행되는지 확인하는 것으로는 충분하지 않습니다.
+
+Corepack이 설치되어 있지만 pnpm이 PATH에 없다면, Windows PowerShell에서 사용자 쓰기 가능 폴더에 실행 파일을 생성하고 현재 세션 PATH에 추가할 수 있습니다. [Corepack의 enable 안내](https://github.com/nodejs/corepack#corepack-enable--name)를 따르는 방식입니다.
+
+```powershell
+$deOPnpmBin = Join-Path $env:LOCALAPPDATA 'de-o-pnpm-bin'
+New-Item -ItemType Directory -Path $deOPnpmBin -Force | Out-Null
+corepack enable pnpm --install-directory $deOPnpmBin
+$env:Path = "$deOPnpmBin;$env:Path"
+pnpm --version
+```
+
+PATH 변경은 현재 PowerShell 세션에만 적용됩니다. 새 터미널에서는 다시 추가하거나 사용자 PATH에 해당 경로를 등록합니다. Corepack이 없는 환경에서는 pnpm 10.34.5를 별도로 설치하고 PATH에서 실행되는지 확인합니다.
+
+`npx --yes pnpm@10.34.5 <명령>`도 대안입니다. 2026-09-18 로컬 검증에서는 이 방식의 `db:validate`가 내부 pnpm 호출까지 성공했습니다. 반면 PATH에 pnpm이 없는 상태의 `corepack pnpm db:validate`는 내부 호출에서 실패했습니다. 두 방식이 동일하게 동작한다고 가정하지 말고 설치 후 `db:validate` 같은 중첩 스크립트도 확인합니다. `dev:crawler`는 pnpm 대신 uv를 직접 호출하는 스크립트입니다.
 
 ## 최초 설치
 
@@ -40,6 +54,18 @@ pnpm --filter @de-o/db build
 ```
 
 JS 의존성은 루트의 `pnpm-lock.yaml`, Python 의존성은 `apps/crawler/uv.lock`으로 관리합니다. Python 가상환경은 `apps/crawler/.venv`에 생성됩니다.
+
+### 기존 설치의 pnpm store 경로 확인
+
+이미 `node_modules`가 있다면 `pnpm store path`와 `node_modules/.modules.yaml`의 `storeDir`을 비교합니다. 저장소·사용자의 `.npmrc` 등 설정도 함께 확인합니다. 2026-09-18 로컬 체크아웃에서는 기존 설치가 저장소의 `.pnpm-store/v10`을 사용하지만 현재 pnpm은 기본 전역 store를 선택하는 불일치가 확인됐습니다.
+
+이 환경에서는 비대화형 설치 시 `ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY`가 발생했다는 검토 결과가 있습니다. `.npmrc` 부재 자체가 오류이거나 새 체크아웃에서도 반드시 실패한다는 뜻은 아닙니다. 기존 의존성을 재사용하려면 원래 store를 명시하고, 기본 store로 통일하려면 의존성 재설치가 필요할 수 있습니다. 예를 들어 기존 로컬 store를 유지하는 설치는 다음과 같습니다.
+
+```powershell
+pnpm install --frozen-lockfile --store-dir .pnpm-store
+```
+
+별도 팀 설정이 없을 때 새 환경은 기본 store를 사용합니다. 팀 공통 store 설정을 도입할 경우 설정 파일과 실행 안내를 함께 관리하고 사용자별 절대 경로는 커밋하지 않습니다. 기존 설치의 경로 불일치를 해결하지 않은 채 `CI=true`나 강제 삭제로 오류만 우회하지 않습니다.
 
 ## 개발 실행
 
@@ -84,6 +110,8 @@ Copy-Item apps/api/.env.example apps/api/.env
 - 모바일과 shared에는 DB 접속 정보를 넣지 않습니다.
 
 Prisma 7의 연결 설정은 `packages/db/prisma.config.ts`에 있습니다. MySQL 드라이버로 `@prisma/adapter-mariadb`를 사용합니다.
+
+2026-09-18 현재 설정에서 Prisma validate/generate는 `packages/db/.env`와 `DATABASE_URL` 없이 통과함을 확인했습니다. 이 검사에는 DB 접속이나 더미 접속 URL이 필요하지 않습니다. 실제 연결·조회·마이그레이션은 유효한 DB 접속 정보를 별도로 준비해야 합니다.
 
 현재 스키마에는 모델이 없습니다. Prisma 7.10의 `prisma generate`로 모델 없는 클라이언트를 생성합니다. M2 데이터 검증 결과를 바탕으로 M3에서 모델을 정의한 뒤 개발용 DB에 첫 마이그레이션을 적용합니다.
 
